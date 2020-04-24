@@ -4,15 +4,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Lint Dockerfile') {
+        stage('Lint') {
             steps {
-                sh 'hadolint app-container/Dockerfile'
+                parallel(
+                    "Lint Dockerfile": {
+                        sh 'hadolint app-container/Dockerfile'
+                    },
+                    "Lint Application code": {
+                        sh 'pylint app-container/app.py'
+                    }
+                
+                )
+                
             }
          }  
 
         stage('Lint Application Code') {
               steps {
-                  sh 'pylint app-container/app.py'
+                  
               }
          }
 
