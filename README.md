@@ -7,13 +7,18 @@ Instructions for each of these dependencies for Amazon Linux are provided below
 - Install hadolint 
 - Install docker
 - Install pylint, flask and numpy using `pip3 install flask pylint numpy`
+- Copy kubeconfig file to Jenkin's user directory: 
+```
+sudo cp ~/.kube/config ~jenkins/.kube/
+sudo chown -R jenkins: ~jenkins/.kube/
+```
 
 ## Plugins Required for Jenkins
 - Blue Ocean
 - Docker
 
 ## Add Docker hub credentials
-
+Create docker credentials with ID `docker-hub-credentials` 
 
 ## Installation on Amazon AMI
 ### Install docker
