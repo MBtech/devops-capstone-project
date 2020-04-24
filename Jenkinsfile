@@ -5,15 +5,11 @@ pipeline {
 
     stages {
         stage('Lint Dockerfile') {
-            agent {
-                docker {
-                    image 'hadolint/hadolint:latest-debian'
-                }
-            }
             steps {
                 sh 'hadolint app-container/Dockerfile'
             }
          }  
+         
         stage('Lint Application Code') {
               steps {
                   sh 'pylint app-container/app.py'
