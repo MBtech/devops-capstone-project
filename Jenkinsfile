@@ -15,15 +15,8 @@ pipeline {
                     }
                 
                 )
-                
             }
-         }  
-
-        stage('Lint Application Code') {
-              steps {
-                  
-              }
-         }
+        }  
 
         stage('Build image') {
             steps{
