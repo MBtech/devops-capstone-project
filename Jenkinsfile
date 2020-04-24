@@ -41,7 +41,7 @@ pipeline {
             steps{
                 sh 'kubectl apply -f quotes.yaml'
                 sh 'kubectl rollout status deployment quotes'
-                sh 'kubectl expose deployment quotes --type=LoadBalancer --name=quotes-service --port=80'
+                sh 'kubectl apply -f quotes-service.yaml'
             }
         }
     }
