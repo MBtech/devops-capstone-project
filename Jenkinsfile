@@ -24,15 +24,7 @@ pipeline {
                     app = docker.build('mbilalce/quotes', 'app-container/')
                 }
             }
-        }
-
-        // stage('Security Scan') {
-        //       steps { 
-        //           script{
-        //             aquaMicroscanner imageName: 'mbilalce/quotes:latest', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'json'
-        //           }
-        //       }
-        //  }              
+        }         
 
         stage('Push image') {
             steps{

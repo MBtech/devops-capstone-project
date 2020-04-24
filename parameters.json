@@ -1,0 +1,14 @@
+[
+	{
+		"ParameterKey": "RemoteAccessCIDR",
+		"ParameterValue": "0.0.0.0/0"
+	},
+	{
+		"ParameterKey": "KeyPairName",
+		"ParameterValue": "bilal-key-us-west-2"
+	},
+	{
+		"ParameterKey": "AvailabilityZones",
+		"ParameterValue": "us-west-2a,us-west-2b,us-west-2c"
+	}
+]
