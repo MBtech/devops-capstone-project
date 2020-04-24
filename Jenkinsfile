@@ -40,7 +40,7 @@ pipeline {
         stage('Deploy on Kubernetes Cluster'){
             steps{
                 sh 'kubectl apply -f quotes.yaml'
-                sh 'kubectl rollout restart'
+                sh 'kubectl rollout restart deployment quotes'
                 sh 'kubectl rollout status deployment quotes'
                 sh 'kubectl apply -f quotes-service.yaml'
             }
