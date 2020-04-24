@@ -22,6 +22,10 @@ pipeline {
             steps{
                 script{
                     app = docker.build('mbilalce/quotes', 'app-container/')
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                        // app.push("${env.BUILD_NUMBER}")
+                        app.push("latest")
+                    }   
                 }
             }
         }
@@ -34,15 +38,13 @@ pipeline {
         //       }
         //  }              
 
-        stage('Push image') {
-            steps{
-                script{
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                        app.push("${env.BUILD_NUMBER}")
-                        app.push("latest")
-                    }
-                }
-            }
-        }
+        // stage('Push image') {
+        //     steps{
+        //         script{
+                    
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
