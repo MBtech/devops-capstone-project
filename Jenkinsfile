@@ -1,9 +1,10 @@
+def app
+
 pipeline {
     agent any
-    def app
 
     stages {
-         stage('Lint Dockerfile') {
+        stage('Lint Dockerfile') {
               steps {
                   sh 'hadolint app-container/Dockerfile'
               }
