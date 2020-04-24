@@ -17,7 +17,7 @@ pipeline {
 
         stage('Build image') {
             steps{
-                step{
+                script{
                     app = docker.build('mbilalce/quotes')
                 }
                 
@@ -33,9 +33,11 @@ pipeline {
 
         stage('Push image') {
             steps{
-                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                    app.push("${env.BUILD_NUMBER}")
-                    app.push("latest")
+                script{
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                        app.push("${env.BUILD_NUMBER}")
+                        app.push("latest")
+                    }
                 }
             }
         }
