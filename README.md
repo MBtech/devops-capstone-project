@@ -1,6 +1,7 @@
 # Capstone project for Udacity's DevOps nanodegree
-This is the repository for the Capstone project for Udacity's DevOps Nanodegree. 
-In this project we will use rolling deployment and the deployment yaml file `quotes.yaml` is configured so that 
+This is the repository for the Capstone project for Udacity's DevOps Nanodegree. The simple web application displays random quotes on `/quote` route and on the default route it displays a message to the user that they should use `/quote` to get a random quote. 
+
+In this project we will use **rolling deployment** and the deployment yaml file `quotes.yaml` is configured so that 
 during a rolling update a max of 25% can be unavailable. 
 
 The EKS cluster is setup using `amazon-eks-master.template.yaml` file which is based on the [quick-start cloudformation templates
