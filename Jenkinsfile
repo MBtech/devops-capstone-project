@@ -17,7 +17,10 @@ pipeline {
 
         stage('Build image') {
             steps{
-                app = docker.build('mbilalce/quotes')
+                step{
+                    app = docker.build('mbilalce/quotes')
+                }
+                
             }
             
         }
