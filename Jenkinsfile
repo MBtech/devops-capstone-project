@@ -47,7 +47,7 @@ pipeline {
 
         stage('Deploy on Kubernetes Cluster'){
             steps{
-                sh 'kubectl create deployments quotes --image=mbilalce/quotes'
+                sh 'kubectl create deployment quotes --image=mbilalce/quotes'
                 sh 'kubectl rollout status deployment quotes'
                 sh 'kubectl scale --replicas=3 deployment quotes'
                 // sh 'kubectl expose deployment quotes --type=LoadBalancer --name=quotes-service'
