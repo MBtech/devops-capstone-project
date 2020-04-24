@@ -20,7 +20,7 @@ def home():
 @APP.route("/quote", methods=['GET'])
 def quote():
     """ Handler function for the /quote route """
-    html = "<p>"+ choice(QUOTES) +"<p>"
+    html = "<h2>Random Quote</h2><br><p>"+ choice(QUOTES) +"<p>"
     return html.format(format)
 
 if __name__ == "__main__":

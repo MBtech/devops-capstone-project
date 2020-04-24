@@ -1,8 +1,13 @@
 # Capstone project for Udacity's DevOps nanodegree
-This is the repository for the Capstone project for Udacity's DevOps Nanodegree
+This is the repository for the Capstone project for Udacity's DevOps Nanodegree. 
+In this project we will use rolling deployment and the deployment yaml file `quotes.yaml` is configured so that 
+during a rolling update a max of 25% can be unavailable. 
 
-## Pre-requisites on the Build Server
-Instructions for each of these dependencies for Amazon Linux are provided below
+The EKS cluster is setup using `amazon-eks-master.template.yaml` file which is based on the [quick-start cloudformation templates
+provided by AWS](https://github.com/aws-quickstart/quickstart-amazon-eks). Parameters can be set in `parameters.json`. Small modifications have been made to the aws template so that the Security group for the Bastion host has port 8080 open for any kind of local testing of the kubernetes deployments without using the load balancer. 
+
+## Setup
+Install the following pre-requisites on the Build Server. Instructions for each of these dependencies for Amazon Linux are provided [below](#installation-on-amazon-ami)
 - Install Jenkins
 - Install hadolint 
 - Install docker
@@ -13,12 +18,13 @@ sudo cp ~/.kube/config ~jenkins/.kube/
 sudo chown -R jenkins: ~jenkins/.kube/
 ```
 
-## Plugins Required for Jenkins
-- Blue Ocean
-- Docker
-
-## Add Docker hub credentials
-Create docker credentials with ID `docker-hub-credentials` 
+## Running the project
+- Start the Kubernetes cluster using: `./create-stack.sh eks-stack amazon-eks-master.template.yaml parameters.json ` 
+- Once the kubernetes cluster is setup, start Jenkins and install `Blue Ocean` and `Docker` plugins
+- Create docker credentials with ID `docker-hub-credentials` in Jenkins Credentials 
+- Create the pipeline using the github repository 
+- Build the pipeline and it'll deploy the web app. It takes a couple of minutes for the external load balancer to be up and running
+- Service will be available to be accessed at `http://<load-balancer-ip>:80/quote`. The load balancer's external IP can be displayed by using `kubectl get services` on the bastion host
 
 ## Installation on Amazon AMI
 ### Install docker

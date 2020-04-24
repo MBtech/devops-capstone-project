@@ -511,8 +511,8 @@ Resources:
     DependsOn: EKSStack
     Properties: 
       GroupId: !GetAtt EKSStack.Outputs.BastionSecurityGroup
-      FromPort: 80
-      ToPort: 10000
+      FromPort: 8080
+      ToPort: 8080
       IpProtocol: tcp
       CidrIp: !Ref RemoteAccessCIDR
 Outputs:
