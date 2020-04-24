@@ -27,7 +27,7 @@ pipeline {
 
         stage('Security Scan') {
               steps { 
-                 aquaMicroscanner imageName: 'mbilalce/quotes:latest', notCompleted: 'exit 1', onDisallowed: 'fail'
+                 aquaMicroscanner imageName: 'mbilalce/quotes:latest', notCompliesCmd: 'exit 1', onDisallowed: 'fail'
               }
          }              
 
