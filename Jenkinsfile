@@ -9,7 +9,7 @@ pipeline {
                 sh 'hadolint app-container/Dockerfile'
             }
          }  
-         
+
         stage('Lint Application Code') {
               steps {
                   sh 'pylint app-container/app.py'
@@ -19,7 +19,7 @@ pipeline {
         stage('Build image') {
             steps{
                 script{
-                    app = docker.build('mbilalce/quotes')
+                    app = docker.build('mbilalce/quotes', '-f app-container/Dockerfile')
                 }
                 
             }
